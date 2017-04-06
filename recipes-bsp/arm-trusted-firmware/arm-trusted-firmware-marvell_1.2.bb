@@ -75,15 +75,6 @@ export CROSS_CM3 = "${STAGING_BINDIR_NATIVE}/arm-marvellmllib32-linux-gnueabi/ar
 # Export path to binary file
 export SCP_BL2="${WORKDIR}/bin-marvell/RTOSDemo-cm3.bin"
 
-do_compile_prepend_armada37xx() {
-    if [ ! -f ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe ]; then
-        unzip ${S}/tools/wtp/WTPTP_TOOLS_3_3_12.zip
-        chmod a+x ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe
-        cp ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe ${STAGING_BINDIR_NATIVE}/
-   fi
-
-}
-
 do_compile() {
 	oe_runmake all fip
 }
@@ -99,4 +90,4 @@ do_deploy() {
 addtask deploy before do_build after do_compile
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-COMPATIBLE_MACHINE = "(armada70xx|armada80xx)"
+COMPATIBLE_MACHINE = "(armada70xx|armada80xx|armada37xx)"
