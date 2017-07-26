@@ -24,6 +24,7 @@ SRCREV_FORMAT = "uboot"
 PV .= "+git${SRCPV}"
 
 S = "${WORKDIR}/uboot"
+B = "${S}"
 
 do_compile () {
     unset LDFLAGS
